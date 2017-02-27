@@ -11,6 +11,7 @@
     <name>ShoppingCart Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+	
     <properties>
         <java-version>1.8</java-version>
 		<!-- Sonar -->		
