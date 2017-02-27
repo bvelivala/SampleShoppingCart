@@ -4,4 +4,4 @@ echo $1
 export PGDATABASE=sonardb
 export PGUSER=sonar
 export PGPASSWORD=sonar
-sudo $1/psql -f "/tmp/postgres_scripts.sql"
+$1/psql -f "/var/lib/jenkins/workspace/demo_insdevops/postgres_scripts.sql"
