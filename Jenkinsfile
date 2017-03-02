@@ -21,8 +21,16 @@ node {
 	        performanceReport compareBuildPrevious: false, configType: 'PRT', errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: '', errorUnstableThreshold: 10, failBuildIfNoResultFile: false, modeOfThreshold: false, modePerformancePerTestCase: true, modeThroughput: false, nthBuildNumber: 0, parsers: [[$class: 'JUnitParser', glob: '**/TEST-*.xml']], relativeFailedThresholdNegative: -10.0, relativeFailedThresholdPositive: 10.0, relativeUnstableThresholdNegative: -10.0, relativeUnstableThresholdPositive: 10.0
         }
         
-		stage('Store Artifact') {
+	stage('Store Artifact') {
             nexusArtifactUploader artifacts: [[artifactId: 'ShoppingCart', classifier: '', file: 'target/ShoppingCart.war', type: 'war']], credentialsId: 'nexus', groupId: 'org.cdsdemo', nexusUrl: 'ec2-52-24-142-120.us-west-2.compute.amazonaws.com:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '${BUILD_NUMBER}'
         }
+	
+	stage('Dev Deploy') {
+	    sh 'curl -v --basic --user admin:devops --upload-file target/ShoppingCart.war "http://manager-script:changeit@ec2-52-24-142-120.us-west-2.compute.amazonaws.com:9080/manager/text/deploy?path=/ShoppingCart-30&update=true"'
+	}
+	    
+	stage('UAT Deploy') {
+	    sh 'curl -v --basic --user admin:devops --upload-file target/ShoppingCart.war "http://manager-script:changeit@ec2-52-24-142-120.us-west-2.compute.amazonaws.com:9080/manager/text/deploy?path=/ShoppingCart-30&update=true"'
+	}
     }
 }
