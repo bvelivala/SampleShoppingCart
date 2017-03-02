@@ -22,7 +22,7 @@ node {
         }
         
 	stage('Store Artifact') {
-            nexusArtifactUploader artifacts: [[artifactId: 'ShoppingCart', classifier: '', file: 'target/ShoppingCart.war', type: 'war']], credentialsId: 'nexus', groupId: 'org.cdsdemo', nexusUrl: 'ec2-52-24-142-120.us-west-2.compute.amazonaws.com:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '${BUILD_NUMBER}'
+            nexusArtifactUploader artifacts: [[artifactId: 'ShoppingCart', classifier: '', file: 'target/ShoppingCart.war', type: 'war']], credentialsId: 'nexus', groupId: 'org.cdsdemo', nexusUrl: 'ec2-52-24-142-120.us-west-2.compute.amazonaws.com:8081/nexus/content/repositories/releases/org/cdsdemo/ShoppingCart/', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '${BUILD_NUMBER}'
         }
 	
 	stage('Dev Deploy') {
