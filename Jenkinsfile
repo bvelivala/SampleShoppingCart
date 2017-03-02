@@ -28,9 +28,10 @@ node {
 	stage('Dev Deploy') {
 	    sh 'curl -v --basic --user admin:devops --upload-file target/ShoppingCart.war "http://manager-script:changeit@ec2-52-24-142-120.us-west-2.compute.amazonaws.com:9080/manager/text/deploy?path=/ShoppingCart-30&update=true"'
 	}
-	    
+	
+	 
 	stage('UAT Deploy') {
-	    sh 'curl -v --basic --user admin:devops --upload-file target/ShoppingCart.war "http://manager-script:changeit@ec2-52-24-142-120.us-west-2.compute.amazonaws.com:9080/manager/text/deploy?path=/ShoppingCart-30&update=true"'
+	    sh 'curl -v --basic --user admin:devops --upload-file target/ShoppingCart.war "http://manager-script:changeit@ec2-35-166-232-252.us-west-2.compute.amazonaws.com:8080/manager/text/deploy?path=/ShoppingCart-30&update=true"'
 	}
     }
 }
