@@ -37,7 +37,7 @@ public class CartInfoValidatorTest {
         Validator validator = createValidator();
         Set<ConstraintViolation<CartInfo>> constraintViolations = validator.validate(cartInfo);
 
-        assertThat(constraintViolations.size()).isEqualTo(0);
+        assertThat(constraintViolations.size()).isEqualTo(1);
         ConstraintViolation<CartInfo> violation = constraintViolations.iterator().next();
         assertThat(violation.getPropertyPath().toString()).isEqualTo("orderNum");
         assertThat(violation.getMessage()).isEqualTo("must be greater than or equal to 1");	
